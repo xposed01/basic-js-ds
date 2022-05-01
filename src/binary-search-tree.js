@@ -6,26 +6,31 @@ const { Node } = require('../extensions/list-tree.js');
 * Implement simple binary search tree according to task description
 * using Node from extensions
 */
+
+// : Бинарное дерево - Корень - ветви - листья  
+// : значение больше корня идет вправо >
+// : значение меньше корня идет влево  <
+
 class BinarySearchTree {
 
   constructor() {
-		this.root = null;
+		this.rootNode = null;
 	}
   
   root() {
-    return this.root;
+    return this.rootNode;
   }
 
   add(data) {
     let newNode = new Node(data);
 		// есть ли корень?
-		if (!this.root) {
-			this.root = newNode;
+		if (!this.rootNode) {
+			this.rootNode = newNode;
 			return;
 		}
 
 		// текущее положение ветви внизу
-		let currentNode = this.root;
+		let currentNode = this.rootNode;
 
 		// добавление значения
 		while (currentNode) {
@@ -51,7 +56,7 @@ class BinarySearchTree {
   }
 
   has(data) {
-    return search(this.root, data);
+    return search(this.rootNode, data);
 
     function search (node, data) {
       if (!node) return false;
@@ -67,7 +72,7 @@ class BinarySearchTree {
   }
 
   find(data) {
-    return search(this.root, data);
+    return search(this.rootNode, data);
 
     function search (node, data) {
       if (!node) return null;
@@ -83,7 +88,7 @@ class BinarySearchTree {
   }
 
   remove(data) {
-    this.root = removeNode(this.root, data);
+    this.rootNode = removeNode(this.rootNode, data);
 
     function removeNode(node, data) {
       if (!node) {
@@ -132,11 +137,11 @@ class BinarySearchTree {
   }
 
   min() {
-    if (!this.root) {
+    if (!this.rootNode) {
       return;
     }
 
-    let node = this.root;
+    let node = this.rootNode;
     while (node.left) {
       node = node.left;
     }
@@ -144,11 +149,11 @@ class BinarySearchTree {
   }
 
   max() {
-    if (!this.root) {
+    if (!this.rootNode) {
       return;
     }
 
-    let node = this.root;
+    let node = this.rootNode;
     while (node.right) {
       node = node.right;
     }
